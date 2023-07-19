@@ -2,7 +2,6 @@ import "./Products.css";
 import { AddToCartIcon } from "./icons";
 
 export function Products({ products }) {
-  console.log(products);
   return (
     <main className="products">
       <ul>
@@ -10,7 +9,7 @@ export function Products({ products }) {
           <li key={product.id}>
             <img src={product.thumbnail} alt={product.title} />
             <div>
-              <strong>{product.name}</strong> - ${product.price}
+              <strong>{product.title}</strong> - ${product.price}
             </div>
             <div>
               <button>
