@@ -4,8 +4,23 @@ import { useState } from "react";
 
 function App() {
   const [products] = useState(initialProducts);
+  const [filters, setFilter] = useState({
+    categoy: "all",
+    minPrice: 0,
+  });
 
-  return <Products products={products} />;
+  const filterProducts = (products) => {
+    return products.filter((product) => {
+      return (
+        product.price >= filters.minPrice &&
+        (filters.categoy === "all" || filters.categoy === product.categoy)
+      );
+    });
+  };
+
+  const filteredProducts = filterProducts(products);
+
+  return <Products products={filteredProducts} />;
 }
 
 export default App;
