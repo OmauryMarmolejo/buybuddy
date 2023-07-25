@@ -6,15 +6,16 @@ import { Header } from "./components/Header";
 function App() {
   const [products] = useState(initialProducts);
   const [filters, setFilter] = useState({
-    categoy: "all",
+    category: "all",
     minPrice: 0,
   });
 
   const filterProducts = (products) => {
+    console.log(filters);
     return products.filter((product) => {
       return (
         product.price >= filters.minPrice &&
-        (filters.categoy === "all" || filters.categoy === product.categoy)
+        (filters.category === "all" || filters.category === product.category)
       );
     });
   };
@@ -23,7 +24,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header changeFilters={setFilter} />
       <Products products={filteredProducts} />
     </>
   );
