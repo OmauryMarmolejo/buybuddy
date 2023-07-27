@@ -3,15 +3,13 @@ import { Products } from "./components/Products";
 import { useState } from "react";
 import { Header } from "./components/Header";
 
-function App() {
-  const [products] = useState(initialProducts);
+function useFilters() {
   const [filters, setFilter] = useState({
     category: "all",
     minPrice: 0,
   });
 
   const filterProducts = (products) => {
-    console.log(filters);
     return products.filter((product) => {
       return (
         product.price >= filters.minPrice &&
@@ -19,6 +17,13 @@ function App() {
       );
     });
   };
+
+  return { setFilter, filterProducts };
+}
+
+function App() {
+  const [products] = useState(initialProducts);
+  const { setFilter, filterProducts } = useFilters();
 
   const filteredProducts = filterProducts(products);
 
