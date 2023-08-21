@@ -16,7 +16,7 @@ function App() {
     <>
       <Header />
       <Products products={filteredProducts} />
-      {IS_DEVELOPMENT && <Footer filters={filters} />}
+      {IS_DEVELOPMENT && <Footer />}
     </>
   );
 }
